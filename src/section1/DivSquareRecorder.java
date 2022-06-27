@@ -2,7 +2,7 @@ package section1;
 
 import processing.core.PApplet;
 
-public class DivSquare extends PApplet {
+public class DivSquareRecorder extends PApplet {
 
     @Override
     public void settings() {
@@ -15,10 +15,14 @@ public class DivSquare extends PApplet {
         int numA = 10;
         int numB = 6;
         float ratio = (float) numB /numA;
+        float wd = width;
         float xPos = 0;
         float yPos = 0;
         int itr = 0;
-        float wd = width;
+
+        String namePDF = str(numA) + "-" + str(numB) + ".pdf";
+        String namePNG = str(numA) + "-" + str(numB) + ".png";
+        beginRecord(PDF, namePDF);
 
         while (wd > 0.1){
             itr++;
@@ -38,6 +42,9 @@ public class DivSquare extends PApplet {
                 wd = width - yPos;
             }
         }
+
+        endRecord();
+        save(namePNG);
     }
 
     @Override
@@ -46,6 +53,6 @@ public class DivSquare extends PApplet {
     }
 
     public static void main(String[] args){
-        PApplet.main("section1.DivSquare");
+        PApplet.main("section1.DivSquareRecorder");
     }
 }
